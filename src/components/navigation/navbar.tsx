@@ -8,6 +8,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { NavLinks } from "@/constants";
 
 
 const style = {
@@ -15,9 +16,9 @@ const style = {
 	logoContainer: `flex items-center cursor-pointer`,
 	logoText: ` ml-[0.8rem] text-white font-semibold text-2xl`,
 	searchBar: `flex flex-1 mx-[0.8rem] w-max-[520px] items-center bg-[#363840] rounded-[0.8rem] hover:bg-[#4c505c]`,
-	searchIcon: `text-[#8a939b] mx-3 font-bold text-lg`,
+	searchIcon: `text-[#8a939b] mx-3 font-bolcd text-lg`,
 	searchInput: `h-[2.6rem] w-full border-0 bg-transparent outline-0 ring-0 px-2 pl-0 text-[#e6e8eb] placeholder:text-[#8a939b]`,
-	headerItems: ` flex items-center align-right justify-end`,
+	headerItems: ` flex flex-1 px-3 items-center align-right justify-end`,
 	headerItem: `text-white px-4 font-bold text-[#c8cacd] hover:text-white cursor-pointer`,
 	headerIcon: `text-[#8a939b] text-3xl font-black px-4 hover:text-white cursor-pointer`,
 };
@@ -30,17 +31,25 @@ export default function Navbar() {
 		<div className={style.wrapper}>
 			<Link href="/">
 				<div className={style.logoContainer}>
-					{/* <Image src={mantleSeaLogo} height={80} width={200} alt="mantle logo" /> */}
+					{/* <Image src={logo} height={80} width={200} alt="mantle logo" /> */}
 					<div className="text-[32px] text-white font-serif"
 					>
-						MyLogo
+						ChainFolio
 					</div>
 					<div className={style.logoText}></div>
 				</div>
 			</Link>
 
+			<ul className="flex items-center justify-center text-white">
+				{NavLinks.map((link) => (
+					<Link href={link.href} key={link.key}>
+						{link.text}
+					</Link>
+				))}
+			</ul>
+
 			{/* search bar to search streams */}
-			<div className={style.searchBar}>
+			{/* <div className={style.searchBar}> 
 				<div className={style.searchIcon}>
 					<AiOutlineSearch />
 				</div>
@@ -62,7 +71,7 @@ export default function Navbar() {
 				>
 					Search
 				</button>
-			</div>
+			</div> */}
 
 			<div className={style.headerItems}>
 				<Link href="/searching">

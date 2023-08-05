@@ -37,6 +37,7 @@ const { chains, provider } = configureChains(
 );
 
 const projectId = String(process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID);
+console.log("projectId", projectId)
 
 const { wallets } = getDefaultWallets({
     appName: 'ChainFolio',

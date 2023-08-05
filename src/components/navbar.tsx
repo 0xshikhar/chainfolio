@@ -78,7 +78,7 @@ export default function Navbar() {
 
 				<div
 					className={style.headerItem}
-					onClick={() => {
+					onClick={() => { 
 						router.push("/explore");
 					}}
 				>

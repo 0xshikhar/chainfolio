@@ -1,29 +1,19 @@
 'use client';
 
 import * as React from 'react';
-import {
-    RainbowKitProvider,
-    getDefaultWallets,
-    connectorsForWallets,
-} from '@rainbow-me/rainbowkit';
-
-import {
-    argentWallet,
-    trustWallet,
-    ledgerWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+import { RainbowKitProvider, getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { argentWallet, trustWallet, ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 // import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { configureChains, createClient, useAccount, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 
-import {
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    goerli,
-} from 'wagmi/chains';
+import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
+
+// import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+// import { SessionProvider } from 'next-auth/react';
+// import type { Session } from 'next-auth';
+// import { AppProps } from 'next/app';
 
 const { chains, provider } = configureChains(
     [

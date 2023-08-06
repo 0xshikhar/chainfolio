@@ -41,6 +41,7 @@ import { g, auth, config } from '@grafbase/sdk'
 //   // gravatar: g.url().resolver('user/gravatar')
 // })
 
+// @ts-ignore
 const User = g.model('User', {
   name: g.string().length({ min: 3, max: 25 }),
   email: g.string().optional(),
@@ -51,22 +52,36 @@ const User = g.model('User', {
   linkedinUrl: g.url().optional(),
   twitterUrl: g.url().optional(),
   projects: g.relation(() => Project).optional().list()
+}).auth((rules) => {
+  rules.public().read()
 })
 
+// @ts-ignore
 const Project = g.model('Project', {
   title: g.string().length({ min: 3 }),
   description: g.string().optional(),
-  image:  g.url().optional(),
+  image: g.url().optional(),
   liveSiteUrl: g.url().optional(),
   githubUrl: g.url().optional(),
   onChainUrl: g.url().optional(),
   category: g.string().search(),
   createdBy: g.relation(() => User).optional()
+}).auth((rules) => {
+  rules.public().read(),
+    rules.private().create().update().delete()
 })
 
+const jwt = auth.JWT({
+  issuer: 'grafbase',
+  secret: g.env('NEXTAUTH_SECRET')
+})
 
 export default config({
-  schema: g
+  schema: g,
+  auth: {
+    providers: [jwt],
+    rules: (rules) => rules.public()
+  }
   // Integrate Auth
   // https://grafbase.com/docs/auth
   // auth: {

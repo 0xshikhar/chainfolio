@@ -88,7 +88,7 @@ const ProjectForm = ({ type, address, project }: Props) => {
     return (
         <form
             onSubmit={handleFormSubmit}
-            className="flexStart form">
+            className="flexStart flex-col w-full lg:pt-5 pt-5 gap-10 text-lg max-w-5xl mx-auto">
             <div className="flexStart form_image-container">
                 <label htmlFor="poster" className="flexCenter form_image-label">
                     {!form.image && 'Choose a poster for your project'}
@@ -113,7 +113,7 @@ const ProjectForm = ({ type, address, project }: Props) => {
             <FormField
                 title="Title"
                 state={form.title}
-                placeholder="Flexibble"
+                placeholder="ChainFolio"
                 setState={(value) => handleStateChange('title', value)}
             />
 
@@ -129,7 +129,7 @@ const ProjectForm = ({ type, address, project }: Props) => {
                 type="url"
                 title="Website URL"
                 state={form.liveSiteUrl}
-                placeholder="https://jsmastery.pro"
+                placeholder="https://chainfolio.com"
                 setState={(value) => handleStateChange('liveSiteUrl', value)}
             />
 
@@ -137,7 +137,7 @@ const ProjectForm = ({ type, address, project }: Props) => {
                 type="url"
                 title="GitHub URL"
                 state={form.githubUrl}
-                placeholder="https://github.com/adrianhajdin"
+                placeholder="https://github.com/0xshikhar"
                 setState={(value) => handleStateChange('githubUrl', value)}
             />
 

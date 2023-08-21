@@ -1,5 +1,6 @@
 import { GraphQLClient } from 'graphql-request'
-import { getUserQuery, createUserMutation} from '@/graphql'
+import { getUserQuery, createUserMutation } from '@/graphql'
+import { ProjectForm } from '@/common.types'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const apiUrl = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_URL || '' : 'http://127.0.0.1:4000/graphql'
@@ -22,10 +23,9 @@ export const getUser = (address: string) => {
     return makeGraphQLRequest(getUserQuery, { address })
 }
 
-export const createUser = (name: string, email: string, address: string, avatarUrl: string) => 
-{
-    const variables ={
-        input:{
+export const createUser = (name: string, email: string, address: string, avatarUrl: string) => {
+    const variables = {
+        input: {
             name,
             email,
             address,
@@ -34,4 +34,21 @@ export const createUser = (name: string, email: string, address: string, avatarU
     }
 
     return makeGraphQLRequest(createUserMutation, variables)
+}
+
+export const uploadImage = async (imagePath: String) => {
+    try {
+        const response = await fetch(`${serverUrl}/api/upload`, {
+
+        })
+    }
+    catch (err) {
+
+    }
+
+}
+
+export const createNewProject = async (form: ProjectForm,
+    creatorId: string, token: string) => {
+    const imageUrl = await uploadImage(form.image)
 }

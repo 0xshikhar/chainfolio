@@ -36,24 +36,18 @@ const ProjectForm = ({ type, address, project }: Props) => {
 
     const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
-
         const file = e.target.files?.[0];
 
         if (!file) return;
-
         if (!file.type.includes('image')) {
             alert('Please upload an image!');
-
             return;
         }
 
         const reader = new FileReader();
-
         reader.readAsDataURL(file);
-
         reader.onload = () => {
             const result = reader.result as string;
-
             handleStateChange("image", result)
         };
     };
@@ -94,7 +88,7 @@ const ProjectForm = ({ type, address, project }: Props) => {
                     {!form.image && 'Choose a poster for your project'}
                 </label>
                 <input
-                    id="image"
+                    id="image" 
                     type="file"
                     accept='image/*'
                     required={type === "create" ? true : false}
@@ -152,7 +146,7 @@ const ProjectForm = ({ type, address, project }: Props) => {
                 <Button
                     title={submitting ? `${type === "create" ? "Creating" : "Editing"}` : `${type === "create" ? "Create" : "Edit"}`}
                     type="submit"
-                    leftIcon={submitting ? "" : "/plus.svg"}
+                    leftIcon={submitting ? "" : "../../public/images/plus.svg"}
                     submitting={submitting}
                 />
             </div>

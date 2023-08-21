@@ -7,6 +7,7 @@ export const NavLinks = [
 ];
 
 export const categoryFilters = [
+    "Blockchain",
     "Frontend",
     "Backend",
     "Full-Stack",
@@ -16,11 +17,8 @@ export const categoryFilters = [
     "DevOps",
     "Data Science",
     "Machine Learning",
-    "Cybersecurity",
-    "Blockchain",
-    "E-commerce",
-    "Chatbots"
-]
+    "Cybersecurity"
+];
 
 export const footerLinks = [
     {

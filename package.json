@@ -11,9 +11,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.16",
+    "@headlessui/react": "^1.7.15",
     "@rainbow-me/rainbowkit": "^0.12.0",
-    "@worldcoin/idkit": "^0.5.1",
     "alchemy-sdk": "^2.6.2",
     "cloudinary": "^1.40.0",
     "daisyui": "^2.51.6",

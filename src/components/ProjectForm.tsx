@@ -10,6 +10,8 @@ import CustomMenu from './CustomMenu';
 import { categoryFilters } from '@/constants';
 // import { updateProject, createNewProject, fetchToken } from '@/lib/actions';
 import { FormState, ProjectInterface, SessionInterface } from '@/common.types';
+import plusImage from '../../public/images/plus.svg'
+import { MdAdd } from 'react-icons/md';
 
 type Props = {
     type: string,
@@ -57,26 +59,27 @@ const ProjectForm = ({ type, address, project }: Props) => {
 
         setSubmitting(true)
 
-        const { token } = await fetchToken()
+        // using lib actions function
 
-        try {
-            if (type === "create") {
-                await createNewProject(form, session?.user?.id, token)
+        // const { token } = await fetchToken()
+        // try {
+        //     if (type === "create") {
+        //         await createNewProject(form, session?.user?.id, token)
 
-                router.push("/")
-            }
+        //         router.push("/")
+        //     }
 
-            if (type === "edit") {
-                await updateProject(form, project?.id as string, token)
+        //     if (type === "edit") {
+        //         await updateProject(form, project?.id as string, token)
 
-                router.push("/")
-            }
+        //         router.push("/")
+        //     }
 
-        } catch (error) {
-            alert(`Failed to ${type === "create" ? "create" : "edit"} a project. Try again!`);
-        } finally {
-            setSubmitting(false)
-        }
+        // } catch (error) {
+        //     alert(`Failed to ${type === "create" ? "create" : "edit"} a project. Try again!`);
+        // } finally {
+        //     setSubmitting(false) // to stop the loading
+        // }
     }
 
     return (
@@ -88,7 +91,7 @@ const ProjectForm = ({ type, address, project }: Props) => {
                     {!form.image && 'Choose a poster for your project'}
                 </label>
                 <input
-                    id="image" 
+                    id="image"
                     type="file"
                     accept='image/*'
                     required={type === "create" ? true : false}
@@ -142,13 +145,20 @@ const ProjectForm = ({ type, address, project }: Props) => {
                 setState={(value) => handleStateChange('category', value)}
             />
 
-            <div className="flexStart w-full">
-                <Button
+            <div className="flexStart w-full pb-5">
+                {/* <Button
                     title={submitting ? `${type === "create" ? "Creating" : "Editing"}` : `${type === "create" ? "Create" : "Edit"}`}
                     type="submit"
-                    leftIcon={submitting ? "" : "../../public/images/plus.svg"}
+                    leftIcon={submitting ? "" : { MdAdd }}
                     submitting={submitting}
-                />
+                /> */}
+                <button
+                    disabled={submitting || false}
+                    className={`flexCenter gap-3 px-4 py-3 text-white 
+                    ${submitting ? 'bg-black/50' : 'bg-green-200' ? 'bg-green-900' : 'bg-primary-purple'} rounded-xl text-sm font-medium max-md:w-full`}
+                >
+                    <MdAdd />
+                    {submitting ? `${type === "create" ? "Creating" : "Editing"}` : `${type === "create" ? "Create" : "Edit"}`}                </button>
             </div>
         </form>
     )

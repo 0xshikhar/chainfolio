@@ -3,7 +3,7 @@ import { MouseEventHandler } from "react";
 
 type Props = {
     title: string,
-    leftIcon?: string | null,
+    leftIcon?: any,
     rightIcon?: string | null,
     handleClick?: MouseEventHandler,
     submitting?: boolean | false,

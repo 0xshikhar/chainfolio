@@ -1,19 +1,11 @@
-export const sepolia = {
-    contract: "0x26056Cb7EF473D86993c5AdDf1dECfFBb9ae7643",
-    chainId: 11155111,
-}
 
 export const contractAddress = {
-    5: "0x80eD3C1c6286e248E8776147E66D42241019155a", //goerli
+    5: "0x601C42AfC529d23d06D0acE3224D4A265402a61E", //goerli
     421613: "", //arbitrum testnet
     84531: "", //base goerli
     80001: "", //polgon mumbai
     43113: "" // avalanche fuji
 
-}
-
-export const BaseGoerli = {
-    contract: "0x80eD3C1c6286e248E8776147E66D42241019155a"
 }
 
 export const abi = [
@@ -40,13 +32,7 @@ export const abi = [
             {
                 "indexed": false,
                 "internalType": "string",
-                "name": "email",
-                "type": "string"
-            },
-            {
-                "indexed": false,
-                "internalType": "string",
-                "name": "profileUrl",
+                "name": "linkedinUrl",
                 "type": "string"
             },
             {
@@ -92,6 +78,30 @@ export const abi = [
                 "internalType": "string",
                 "name": "description",
                 "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "demoUrl",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "gitUrl",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "contractUrl",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "enum ChainFolio.Category",
+                "name": "category",
+                "type": "uint8"
             }
         ],
         "name": "ProjectAdded",
@@ -123,6 +133,24 @@ export const abi = [
                 "internalType": "string",
                 "name": "newDescription",
                 "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "newDemoUrl",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "newGitUrl",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "newContractUrl",
+                "type": "string"
             }
         ],
         "name": "ProjectUpdated",
@@ -144,6 +172,31 @@ export const abi = [
                 "internalType": "string",
                 "name": "description",
                 "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "demoUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "gitUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "contractUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "imageUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "enum ChainFolio.Category",
+                "name": "category",
+                "type": "uint8"
             }
         ],
         "name": "addProject",
@@ -160,12 +213,7 @@ export const abi = [
             },
             {
                 "internalType": "string",
-                "name": "email",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "profileUrl",
+                "name": "linkedinUrl",
                 "type": "string"
             },
             {
@@ -212,6 +260,31 @@ export const abi = [
                         "internalType": "string",
                         "name": "description",
                         "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "demoUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "gitUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "contractUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "imageUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "enum ChainFolio.Category",
+                        "name": "category",
+                        "type": "uint8"
                     }
                 ],
                 "internalType": "struct ChainFolio.Project[]",
@@ -261,6 +334,31 @@ export const abi = [
                         "internalType": "string",
                         "name": "description",
                         "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "demoUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "gitUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "contractUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "imageUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "enum ChainFolio.Category",
+                        "name": "category",
+                        "type": "uint8"
                     }
                 ],
                 "internalType": "struct ChainFolio.Project[]",
@@ -301,12 +399,7 @@ export const abi = [
             },
             {
                 "internalType": "string",
-                "name": "email",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "profileUrl",
+                "name": "linkedinUrl",
                 "type": "string"
             },
             {
@@ -333,6 +426,21 @@ export const abi = [
             {
                 "internalType": "string",
                 "name": "newDescription",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "newDemoUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "newGitUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "newContractUrl",
                 "type": "string"
             }
         ],
@@ -370,6 +478,31 @@ export const abi = [
                 "internalType": "string",
                 "name": "description",
                 "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "demoUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "gitUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "contractUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "imageUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "enum ChainFolio.Category",
+                "name": "category",
+                "type": "uint8"
             }
         ],
         "stateMutability": "view",

@@ -10,15 +10,31 @@ export const categoryFilters = [
     "Blockchain",
     "Frontend",
     "Backend",
-    "Full-Stack",
+    "Full Stack",
     "Mobile",
-    "UI/UX",
+    "UI",
+    "UX",
     "Game Dev",
     "DevOps",
     "Data Science",
     "Machine Learning",
     "Cybersecurity"
 ];
+
+export const enumCategoryFilters: Record<string, number> = {
+    "Blockchain": 0,
+    "Frontend": 1,
+    "Backend": 2,
+    "Full Stack": 3,
+    "Mobile": 4,
+    "UI": 5,
+    "UX": 6,
+    "Game Dev": 7,
+    "DevOps": 8,
+    "Data Science": 9,
+    "Machine Learning": 10,
+    "Cybersecurity": 11
+}
 
 export const footerLinks = [
     {

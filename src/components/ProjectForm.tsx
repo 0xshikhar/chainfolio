@@ -21,6 +21,9 @@ type Props = {
     project?: ProjectInterface
 }
 
+type ChainIdType = 5 | 421613 | 84531 | 80001 | 43113;
+
+
 const ProjectForm = ({ type, address, project }: Props) => {
     const router = useRouter()
     const provider = useProvider();
@@ -29,11 +32,14 @@ const ProjectForm = ({ type, address, project }: Props) => {
     const [submitting, setSubmitting] = useState<boolean>(false);
     const [form, setForm] = useState<FormState>({
         title: project?.title || "",
+        tagline: project?.tagline || "",
         description: project?.description || "",
-        image: project?.image || "",
         liveSiteUrl: project?.liveSiteUrl || "",
         githubUrl: project?.githubUrl || "",
+        contractUrl: project?.contractUrl || "",
+        image: project?.image || "",
         category: project?.category || ""
+        
     })
 
     const handleStateChange = (fieldName: keyof FormState, value: string) => {
@@ -67,13 +73,13 @@ const ProjectForm = ({ type, address, project }: Props) => {
         // const { token } = await fetchToken()
         try {
             if (type === "create") {
-                await createNewProject(form,  provider._network.chainId, address)
+                await createNewProject(form, provider._network.chainId as ChainIdType, address)
 
                 router.push("/")
             }
 
             if (type === "edit") {
-                // await updateProject(form, project?.id as string, token)
+                // await updateProject(form,  provider._network.chainId, address, project?.id as string)
 
                 router.push("/")
             }
@@ -118,6 +124,13 @@ const ProjectForm = ({ type, address, project }: Props) => {
             />
 
             <FormField
+                title="Tagline"
+                state={form.tagline}
+                placeholder="A social network for developers."
+                setState={(value) => handleStateChange('tagline', value)}
+            />
+
+            <FormField
                 title='Description'
                 state={form.description}
                 placeholder="Showcase and discover remarkable developer projects."
@@ -127,7 +140,7 @@ const ProjectForm = ({ type, address, project }: Props) => {
 
             <FormField
                 type="url"
-                title="Website URL"
+                title="Website/Demo URL"
                 state={form.liveSiteUrl}
                 placeholder="https://chainfolio.com"
                 setState={(value) => handleStateChange('liveSiteUrl', value)}
@@ -137,8 +150,16 @@ const ProjectForm = ({ type, address, project }: Props) => {
                 type="url"
                 title="GitHub URL"
                 state={form.githubUrl}
-                placeholder="https://github.com/0xshikhar"
+                placeholder="https://github.com/chainfolio"
                 setState={(value) => handleStateChange('githubUrl', value)}
+            />
+
+            <FormField
+                type="url"
+                title="Contract URL"
+                state={form.contractUrl}
+                placeholder="https://etherscan.io/0xchainfolio"
+                setState={(value) => handleStateChange('contractUrl', value)}
             />
 
             <CustomMenu

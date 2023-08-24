@@ -11,7 +11,7 @@ export const createNewProject = async (form: any, chainId: ChainIdType, address:
     const imageUrl = await uploadImage(form.image)
     console.log("imageUrl", imageUrl.url)
     console.log("form", form)
-    const enumValue = enumCategoryFilters[form.category]; 
+    const enumValue = enumCategoryFilters[form.category];
     console.log("enumValue", enumValue)
 
     try {
@@ -22,12 +22,32 @@ export const createNewProject = async (form: any, chainId: ChainIdType, address:
             const chainFolioContract = new ethers.Contract(contractAddress[chainId], abi, signer);
 
             // let newProjectTx = await chainFolioContract.addProject(form.title, form.tagline, form.description, form.liveSiteUrl, form.githubUrl, form.contractUrl, imageUrl.url, form.category);
-            let newProjectTx = await chainFolioContract.addProject(form.title, form.tagline, form.description, form.liveSiteUrl, form.githubUrl, form.contractUrl, imageUrl, enumValue);
+            let newProjectTx = await chainFolioContract.addProject(form.title, form.tagline, form.description, form.liveSiteUrl, form.githubUrl, form.contractUrl, imageUrl.url, enumValue);
             console.log("Add New Project Transaction", newProjectTx)
         }
     }
     catch (error) {
         console.log("createNewProject: Ethereum object does not exist")
+    }
+}
+
+export const fetchAllProjects = async ( chainId: ChainIdType) => {
+    if(!chainId){
+        chainId = 5;
+    }
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.providers.Web3Provider(ethereum);
+            const signer = provider.getSigner();
+            const chainFolioContract = new ethers.Contract(contractAddress[chainId], abi, signer);
+
+            let allProjects = await chainFolioContract.getAllProjects();
+            return allProjects; 
+        }
+    }
+    catch (error) {
+        console.log("Ethereum object does not exist")
     }
 }
 

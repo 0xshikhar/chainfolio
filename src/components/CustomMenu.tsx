@@ -3,7 +3,6 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import Image from 'next/image';
-// arrow down icon
 import { MdArrowDropDown } from 'react-icons/md';
 
 type Props = {

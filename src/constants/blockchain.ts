@@ -1,11 +1,10 @@
 
 export const contractAddress = {
-    5: "0x601C42AfC529d23d06D0acE3224D4A265402a61E", //goerli
+    5: "0x9EEcacD627067cCd877587caea7C9cF38B5D2154", //goerli
     421613: "", //arbitrum testnet
     84531: "", //base goerli
     80001: "", //polgon mumbai
     43113: "" // avalanche fuji
-
 }
 
 export const abi = [

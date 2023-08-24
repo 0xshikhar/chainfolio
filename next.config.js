@@ -2,11 +2,14 @@
 const nextConfig = {
 	reactStrictMode: true,
 	images: {
-		domains: ['google.com']
+		domains: ['google.com', 'cloudinary.com', 'res.cloudinary.com']
 	},
 
 	experimental: {
 		serverComponentsExternalPackages: ['cloudinary', 'graphql-request']
+	},
+	eslint: {
+		ignoreDuringBuilds: true
 	}
 }
 

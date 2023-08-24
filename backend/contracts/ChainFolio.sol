@@ -32,6 +32,7 @@ contract ChainFolio {
         string contractUrl;
         string imageUrl;
         Category category; // Use the enum here
+        address projectOnwer;
     }
 
     mapping(address => UserProfile) public profiles;
@@ -112,7 +113,8 @@ contract ChainFolio {
             gitUrl,
             contractUrl,
             imageUrl,
-            category
+            category,
+            msg.sender
         );
         userProjects[msg.sender].push(project);
 

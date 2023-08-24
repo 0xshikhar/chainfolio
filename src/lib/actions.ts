@@ -65,9 +65,9 @@ export const createNewProject = async (form: ProjectForm,
                 }
             }
         }
-        return makeGraphQLRequest(createProjectMutation, variables)
+        // return makeGraphQLRequest(createProjectMutation, variables)
     }
 }
 
 // fetch all projects
-export const fetchAllProjects = async
+// export const fetchAllProjects = async

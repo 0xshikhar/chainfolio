@@ -9,9 +9,11 @@ import Button from './Button';
 import CustomMenu from './CustomMenu';
 import { categoryFilters } from '@/constants';
 // import { updateProject, createNewProject, fetchToken } from '@/lib/actions';
+import { createNewProject } from '@/lib/contract';
 import { FormState, ProjectInterface, SessionInterface } from '@/common.types';
 import plusImage from '../../public/images/plus.svg'
 import { MdAdd } from 'react-icons/md';
+import { useProvider } from 'wagmi';
 
 type Props = {
     type: string,
@@ -21,6 +23,8 @@ type Props = {
 
 const ProjectForm = ({ type, address, project }: Props) => {
     const router = useRouter()
+    const provider = useProvider();
+    console.log("provider", provider._network.chainId)
 
     const [submitting, setSubmitting] = useState<boolean>(false);
     const [form, setForm] = useState<FormState>({
@@ -60,26 +64,25 @@ const ProjectForm = ({ type, address, project }: Props) => {
         setSubmitting(true)
 
         // using lib actions function
-
         // const { token } = await fetchToken()
-        // try {
-        //     if (type === "create") {
-        //         await createNewProject(form, session?.user?.id, token)
+        try {
+            if (type === "create") {
+                await createNewProject(form,  provider._network.chainId, address)
 
-        //         router.push("/")
-        //     }
+                router.push("/")
+            }
 
-        //     if (type === "edit") {
-        //         await updateProject(form, project?.id as string, token)
+            if (type === "edit") {
+                // await updateProject(form, project?.id as string, token)
 
-        //         router.push("/")
-        //     }
+                router.push("/")
+            }
 
-        // } catch (error) {
-        //     alert(`Failed to ${type === "create" ? "create" : "edit"} a project. Try again!`);
-        // } finally {
-        //     setSubmitting(false) // to stop the loading
-        // }
+        } catch (error) {
+            alert(`Failed to ${type === "create" ? "create" : "edit"} a project. Try again!`);
+        } finally {
+            setSubmitting(false) // to stop the loading
+        }
     }
 
     return (

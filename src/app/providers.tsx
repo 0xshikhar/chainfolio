@@ -7,7 +7,7 @@ import { argentWallet, trustWallet, ledgerWallet } from '@rainbow-me/rainbowkit/
 import { configureChains, createClient, useAccount, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 
-import { optimism, baseGoerli, optimismGoerli,sepolia } from 'wagmi/chains';
+import { goerli, avalancheFuji, arbitrumGoerli, baseGoerli, polygonMumbai } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 // import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -17,10 +17,12 @@ import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, provider } = configureChains(
     [
-        optimism,sepolia,
+        goerli,
+        avalancheFuji,
         baseGoerli,
-        optimismGoerli,
-        ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [optimismGoerli] : []),
+        arbitrumGoerli,
+        polygonMumbai,
+        ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
     ],
     [alchemyProvider({ apiKey: String(process.env.ALCHEMY_API_KEY) }), publicProvider()]
 );

@@ -24,6 +24,7 @@ contract ChainFolio {
     }
 
     struct Project {
+        uint256 projectId;
         string projectName;
         string tagline;
         string description;
@@ -39,6 +40,8 @@ contract ChainFolio {
     mapping(address => Project[]) public userProjects;
     address[] public users; // Maintain a list of registered users
     address public owner; // Store the contract owner's address
+    uint256 public projectCounter = 1;
+    mapping(uint256 => Project) public projectsById; // New mapping to store projects by projectId
 
     event ProfileCreated(
         address indexed user,
@@ -48,6 +51,7 @@ contract ChainFolio {
     );
 
     event ProjectAdded(
+        uint256 indexed projectId,
         address indexed user,
         string projectName,
         string description,
@@ -59,6 +63,15 @@ contract ChainFolio {
     event ProjectUpdated(
         address indexed user,
         uint256 projectIndex,
+        string newProjectName,
+        string newDescription,
+        string newDemoUrl,
+        string newGitUrl,
+        string newContractUrl
+    );
+    event ProjectUpdatedById(
+        uint256 indexed projectId,
+        address indexed user,
         string newProjectName,
         string newDescription,
         string newDemoUrl,
@@ -106,6 +119,7 @@ contract ChainFolio {
         Category category
     ) external {
         Project memory project = Project(
+            projectCounter,
             projectName,
             tagline,
             description,
@@ -119,6 +133,7 @@ contract ChainFolio {
         userProjects[msg.sender].push(project);
 
         emit ProjectAdded(
+            projectCounter,
             msg.sender,
             projectName,
             description,
@@ -127,6 +142,9 @@ contract ChainFolio {
             contractUrl,
             category
         );
+
+        projectsById[projectCounter] = project;
+        projectCounter++;
     }
 
     function updateProject(
@@ -159,6 +177,50 @@ contract ChainFolio {
         );
     }
 
+    function updateProjectById(
+        uint256 projectId,
+        string memory newProjectName,
+        string memory newDescription,
+        string memory newDemoUrl,
+        string memory newGitUrl,
+        string memory newContractUrl
+    ) external {
+        int256 projectIndex = findProjectIndex(msg.sender, projectId); // Find the project index
+
+        require(projectIndex != int(-1), "Project not found");
+
+        Project storage project = userProjects[msg.sender][uint(projectIndex)];
+        project.projectName = newProjectName;
+        project.description = newDescription;
+        project.demoUrl = newDemoUrl;
+        project.gitUrl = newGitUrl;
+        project.contractUrl = newContractUrl;
+
+        emit ProjectUpdatedById(
+            projectId,
+            msg.sender,
+            newProjectName,
+            newDescription,
+            newDemoUrl,
+            newGitUrl,
+            newContractUrl
+        );
+    }
+
+    // Helper function to find the index of a project in the user's projects
+    function findProjectIndex(
+        address user,
+        uint256 projectId
+    ) internal view returns (int256) {
+        Project[] storage projects = userProjects[user];
+        for (uint256 i = 0; i < projects.length; i++) {
+            if (projects[i].projectId == projectId) {
+                return int256(i); // Return the index if found
+            }
+        }
+        return -1; // Return a special value (-1) if not found
+    }
+
     function deleteProfile(address user) external onlyOwner {
         delete profiles[user];
         delete userProjects[user];
@@ -169,6 +231,12 @@ contract ChainFolio {
         address user
     ) external view returns (Project[] memory) {
         return userProjects[user];
+    }
+
+    function getProjectById(
+        uint256 projectId
+    ) external view returns (Project memory) {
+        return projectsById[projectId];
     }
 
     function getAllUsers() external view returns (address[] memory) {

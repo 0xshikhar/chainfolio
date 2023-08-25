@@ -52,8 +52,13 @@ const config: HardhatUserConfig = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
-    moonbeam: {
-      url: "https://moonbase-alpha.public.blastapi.io",
+    avalFuji: {
+      url: "https://rpc.ankr.com/avalanche_fuji",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    arbitrumGoerli: {
+      url: "https://arbitrum-goerli.public.blastapi.io",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },

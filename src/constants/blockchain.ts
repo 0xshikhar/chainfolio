@@ -1,10 +1,10 @@
 
 export const contractAddress = {
-    5: "0x9EEcacD627067cCd877587caea7C9cF38B5D2154", //goerli
+    5: "0x9760Ab57BB83E3c4DB301Ad8a68F95aD8954947e", //goerli
     421613: "", //arbitrum testnet
     84531: "", //base goerli
-    80001: "", //polgon mumbai
-    43113: "" // avalanche fuji
+    80001: "0xBC9cd74189aCb7A54BDE5f8B949cf69E8ED64369", //polgon mumbai
+    43113: "0x2cDc47369bb86C05198Ea2CFF8c548b73b919Bb1" // avalanche fuji
 }
 
 export const abi = [
@@ -60,6 +60,12 @@ export const abi = [
     {
         "anonymous": false,
         "inputs": [
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
             {
                 "indexed": true,
                 "internalType": "address",
@@ -156,6 +162,55 @@ export const abi = [
         "type": "event"
     },
     {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "newProjectName",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "newDescription",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "newDemoUrl",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "newGitUrl",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "newContractUrl",
+                "type": "string"
+            }
+        ],
+        "name": "ProjectUpdatedById",
+        "type": "event"
+    },
+    {
         "inputs": [
             {
                 "internalType": "string",
@@ -246,6 +301,11 @@ export const abi = [
             {
                 "components": [
                     {
+                        "internalType": "uint256",
+                        "name": "projectId",
+                        "type": "uint256"
+                    },
+                    {
                         "internalType": "string",
                         "name": "projectName",
                         "type": "string"
@@ -284,6 +344,11 @@ export const abi = [
                         "internalType": "enum ChainFolio.Category",
                         "name": "category",
                         "type": "uint8"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "projectOnwer",
+                        "type": "address"
                     }
                 ],
                 "internalType": "struct ChainFolio.Project[]",
@@ -310,15 +375,20 @@ export const abi = [
     {
         "inputs": [
             {
-                "internalType": "address",
-                "name": "user",
-                "type": "address"
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
             }
         ],
-        "name": "getProjects",
+        "name": "getProjectById",
         "outputs": [
             {
                 "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "projectId",
+                        "type": "uint256"
+                    },
                     {
                         "internalType": "string",
                         "name": "projectName",
@@ -358,6 +428,82 @@ export const abi = [
                         "internalType": "enum ChainFolio.Category",
                         "name": "category",
                         "type": "uint8"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "projectOnwer",
+                        "type": "address"
+                    }
+                ],
+                "internalType": "struct ChainFolio.Project",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            }
+        ],
+        "name": "getProjects",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "projectId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "projectName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "tagline",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "demoUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "gitUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "contractUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "imageUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "enum ChainFolio.Category",
+                        "name": "category",
+                        "type": "uint8"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "projectOnwer",
+                        "type": "address"
                     }
                 ],
                 "internalType": "struct ChainFolio.Project[]",
@@ -411,6 +557,83 @@ export const abi = [
         "type": "function"
     },
     {
+        "inputs": [],
+        "name": "projectCounter",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "projectsById",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "projectName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "tagline",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "demoUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "gitUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "contractUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "imageUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "enum ChainFolio.Category",
+                "name": "category",
+                "type": "uint8"
+            },
+            {
+                "internalType": "address",
+                "name": "projectOnwer",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "inputs": [
             {
                 "internalType": "uint256",
@@ -451,6 +674,44 @@ export const abi = [
     {
         "inputs": [
             {
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "newProjectName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "newDescription",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "newDemoUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "newGitUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "newContractUrl",
+                "type": "string"
+            }
+        ],
+        "name": "updateProjectById",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "address",
                 "name": "",
                 "type": "address"
@@ -463,6 +724,11 @@ export const abi = [
         ],
         "name": "userProjects",
         "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
             {
                 "internalType": "string",
                 "name": "projectName",
@@ -502,6 +768,11 @@ export const abi = [
                 "internalType": "enum ChainFolio.Category",
                 "name": "category",
                 "type": "uint8"
+            },
+            {
+                "internalType": "address",
+                "name": "projectOnwer",
+                "type": "address"
             }
         ],
         "stateMutability": "view",

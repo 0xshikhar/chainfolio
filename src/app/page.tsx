@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useProvider, useAccount } from 'wagmi'
 import { ProjectInterface } from "@/common.types";
-import { fetchAllProjects } from "@/lib/contract";
+import { fetchAllProjects, convertBigNumber , getProjectId} from "@/lib/contract";
 import ProjectCard from "@/components/ProjectCard";
 import Categories from "@/components/Categories";
 declare let window: any;
@@ -38,24 +38,25 @@ export const revalidate = 0;
 const Home = () => {
   // const { chain, chains } = useNetwork()
   const router = useRouter()
-  const provider = useProvider();
-  const { address, isConnected } = useAccount()
-
-  console.log("provider", provider._network.chainId)
   const { ethereum } = window;
+  const { address, isConnected } = useAccount()
   const [projects, setProjects] = useState() as any
+
+  const provider = useProvider();
+  console.log("provider", provider._network.chainId)
 
   useEffect(() => {
     async function fetchData() {
       if (ethereum) {
-        const data = await fetchAllProjects(provider._network.chainId as ChainIdType)
+        const data = await fetchAllProjects(provider._network.chainId as ChainIdType) as ProjectInterface[]
         setProjects(data)
         console.log("data", data)
+        const result = await getProjectId(3, 5)
+        console.log("result", result)
       }
       else {
         alert("Please Connect Web3 Wallet to see On-Chain Data")
       }
-
     }
     fetchData()
   }, [ethereum, provider._network.chainId])
@@ -101,19 +102,21 @@ const Home = () => {
       </button> */}
 
       <section className="projects-grid">
-        {projects?.map(( node : any) => (
-          console.log("node section", node.imageUrl),
-          
-          <ProjectCard
-          key={`${node?.length}`}
-          id={node?.length}
-          image={node?.imageUrl}
-          title={node?.projectName}
-          githubUrl={node?.githubUrl}
-          category={node?.category}
-          tagline={node?.tagline}
-          />
-        ))}
+        {projects?.map((node: any) => {
+          const projectId = convertBigNumber(node.projectId._hex);
+          return (
+            <ProjectCard
+              key={projectId}
+              id={String(projectId)}
+              image={node?.imageUrl}
+              title={node?.projectName}
+              githubUrl={node?.githubUrl}
+              category={node?.category}
+              tagline={node?.tagline}
+              address={node?.projectOnwer}
+            />
+          );
+        })}
       </section>
 
       {/* <LoadMore

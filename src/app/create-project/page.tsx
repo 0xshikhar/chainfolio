@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from 'react'
-import Modal from '@/components/Modal'
+// import Modal from '@/components/Modal'
 import ProjectForm from '@/components/ProjectForm'
 import { useAccount } from 'wagmi'
 import { redirect, useRouter } from 'next/navigation'

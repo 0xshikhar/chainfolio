@@ -1,5 +1,7 @@
 import { User, Session } from 'next-auth'
 
+export type ChainIdType = 5 | 421613 | 84531 | 80001 | 43113;
+
 export type FormState = {
     title: string;
     description: string;

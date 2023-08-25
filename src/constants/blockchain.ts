@@ -1,7 +1,7 @@
 
 export const contractAddress = {
     5: "0x9760Ab57BB83E3c4DB301Ad8a68F95aD8954947e", //goerli
-    421613: "", //arbitrum testnet
+    421613: "0x43ccc7277E12d6dD3363B9897e0cf5BB22e93735", //arbitrum testnet
     84531: "", //base goerli
     80001: "0xBC9cd74189aCb7A54BDE5f8B949cf69E8ED64369", //polgon mumbai
     43113: "0x2cDc47369bb86C05198Ea2CFF8c548b73b919Bb1" // avalanche fuji

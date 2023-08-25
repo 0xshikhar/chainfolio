@@ -3,14 +3,13 @@
 
 // import { getCurrentUser } from "@/lib/session"
 import { getProjectId, getProjectByUser } from "@/lib/contract"
-import Modal from "@/components/Modal"
+// import Modal from "@/components/Modal"
 import ProjectPage from "@/components/ProjectPage"
 // import ProjectActions from "@/components/ProjectActions"
 // import RelatedProjects from "@/components/RelatedProjects"
-import { ProjectInterface } from "@/common.types"
+import { ProjectInterface, ChainIdType} from "@/common.types"
 import { useProvider } from "wagmi"
 import { useEffect, useState } from "react"
-type ChainIdType = 5 | 421613 | 84531 | 80001 | 43113;
 
 
 const Project = ({ params: { id } }: { params: { id: string } }) => {
@@ -36,11 +35,11 @@ const Project = ({ params: { id } }: { params: { id: string } }) => {
     // const renderLink = () => `/profile/${project?.projectOnwer}`
 
     return (
-        <Modal>
+        <div>
             {project &&
                 <ProjectPage project={project} />
             }
-        </Modal>
+        </div>
     )
 }
 

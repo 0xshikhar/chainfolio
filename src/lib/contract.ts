@@ -99,6 +99,27 @@ export const getProjectByUser = async (address: string, chainId: ChainIdType) =>
     }
 }
 
+export const getUserProfile = async (address: string, chainId: ChainIdType) => {
+    if (!chainId) {
+        chainId = 5;
+    }
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.providers.Web3Provider(ethereum);
+            const signer = provider.getSigner();
+            const chainFolioContract = new ethers.Contract(contractAddress[chainId], abi, signer);
+
+            let profilesDetails = await chainFolioContract.profiles(address);
+            console.log("profilesDetails", profilesDetails)
+            return profilesDetails;
+        }
+    }
+    catch (error) {
+        console.log("Ethereum object does not exist")
+    }
+}
+
 
 // export const getChainId = async () => {
 //     const provider = useProvider();

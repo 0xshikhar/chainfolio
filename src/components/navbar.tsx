@@ -8,7 +8,6 @@ import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { NavLinks } from "@/constants";
 
-
 const style = {
 	wrapper: `bg-black w-screen px-[1.2rem] py-[0.8rem] flex `,
 	logoContainer: `flex items-center cursor-pointer`,
@@ -38,13 +37,15 @@ export default function Navbar() {
 				</div>
 			</Link>
 
-			<ul className="flex items-center justify-center text-white">
+
+
+			{/* <ul className="flex items-center justify-center text-white">
 				{NavLinks.map((link) => (
 					<Link href={link.href} key={link.key}>
 						{link.text}
 					</Link>
 				))}
-			</ul>
+			</ul> */}
 
 			{/* search bar to search streams */}
 			{/* <div className={style.searchBar}> 
@@ -75,21 +76,30 @@ export default function Navbar() {
 				<Link href="/searching">
 					{/* <div className={style.headerItem}> Streaming </div> */}
 				</Link>
+				<div
+					className={style.headerItem}
+					onClick={() => {
+						router.push("/");
+					}}
+				>
+					Home
+				</div>
 
 				<div
 					className={style.headerItem}
-					onClick={() => { 
-						router.push("/explore");
+					onClick={() => {
+						router.push("/create-project");
 					}}
 				>
-					Explore
+					Create Project
 				</div>
+
 
 				{/* <div className={style.headerIcon} onClick={() => { router.push(`/profile/${address}`) }}> */}
 				<div
 					className={style.headerIcon}
 					onClick={() => {
-						router.push("/nft");
+						router.push("/profile/1");
 					}}
 				>
 					<CgProfile />

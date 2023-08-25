@@ -1,11 +1,13 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useProvider, useAccount } from 'wagmi'
-import { ProjectInterface } from "@/common.types";
-import { fetchAllProjects, convertBigNumber , getProjectId} from "@/lib/contract";
+import { useProvider, useAccount, useEnsName } from 'wagmi'
+import { fetchEnsName } from '@wagmi/core'
+import { ProjectInterface, ChainIdType} from "@/common.types";
+import { fetchAllProjects, convertBigNumber, getProjectId } from "@/lib/contract";
 import ProjectCard from "@/components/ProjectCard";
 import Categories from "@/components/Categories";
+import toast, { Toaster } from 'react-hot-toast';
 declare let window: any;
 
 
@@ -29,7 +31,6 @@ type ProjectSearch = {
     };
   },
 }
-type ChainIdType = 5 | 421613 | 84531 | 80001 | 43113;
 
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
@@ -53,13 +54,37 @@ const Home = () => {
         console.log("data", data)
         const result = await getProjectId(3, 5)
         console.log("result", result)
+        const ensName = await fetchEnsName({
+          address: `${address}` as any,
+          chainId: 1,
+        })
+        if (isConnected) {
+          if (ensName) {
+            toast(`Welcome 🎉 ${ensName}`);
+            console.log("address", address, "ensName.", ensName)
+          }
+          else {
+            toast(`Welcome 🎉 0xshikhar.eth`);
+            console.log("address", address, "ensName.", ensName)
+          }
+        }
       }
       else {
         alert("Please Connect Web3 Wallet to see On-Chain Data")
       }
     }
+
     fetchData()
-  }, [ethereum, provider._network.chainId])
+  }, [ethereum, provider._network.chainId, isConnected, address])
+
+
+
+  // if (isConnected) {
+  //   console.log("address", address, "ensName", ensName)
+  //   toast.success('Success Notification !', {
+  //     position: toast.POSITION.TOP_RIGHT
+  //   });
+  // }
 
   // if (projects.length === 0) {
   //   return (
@@ -118,7 +143,7 @@ const Home = () => {
           );
         })}
       </section>
-
+      <Toaster />
       {/* <LoadMore
         startCursor={data?.projectSearch?.pageInfo?.startCursor}
         endCursor={data?.projectSearch?.pageInfo?.endCursor}

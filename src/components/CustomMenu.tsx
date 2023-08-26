@@ -3,7 +3,6 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import Image from 'next/image';
-import { MdArrowDropDown } from 'react-icons/md';
 
 type Props = {
     title: string,
@@ -14,18 +13,17 @@ type Props = {
 
 const CustomMenu = ({ title, state, filters, setState }: Props) => (
     <div className="flexStart flex-col w-full gap-7 relative">
-        <label htmlFor={title} className="w-full text-gray-100">{title}</label>
+        <label htmlFor={title} className="w-full text-gray-900">{title}</label>
         <Menu as="div" className="self-start relative">
             <div>
                 <Menu.Button className="flexCenter custom_menu-btn">
                     {state || 'Category'}
-                    <MdArrowDropDown className="font-bold " />
-                    {/* <Image
-                        src="../../public/images/arrow-down.svg"
+                    <Image
+                        src="/images/arrow-down.svg"
                         width={10}
                         height={5}
                         alt="arrow down"
-                    /> */}
+                    />
                 </Menu.Button>
             </div>
             <Transition

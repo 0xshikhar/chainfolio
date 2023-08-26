@@ -120,7 +120,7 @@ const Home = () => {
   // }
 
   return (
-    <section className="flexStart flex-col paddings mb-16">
+    <section className="flexStart flex-col paddings bg-gradient-to-r from-yellow-200 via-green-200 to-green-300 ">
       <Categories />
       {/* <button type="button" onClick={() => router.push('/create-project')}>
         Create Project

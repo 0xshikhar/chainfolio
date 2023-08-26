@@ -13,6 +13,18 @@ export type FormState = {
     category: string;
 };
 
+export type UserFormState = {
+    name: string;
+    linkedinUrl: string;
+    githubUrl: string;
+};
+
+export type NewUserInterface = {
+    name: string;
+    linkedinUrl: string;
+    githubUrl: string;
+};
+
 export interface ProjectInterface {
     title: string;
     description: string;

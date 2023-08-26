@@ -38,6 +38,26 @@ export const createNewProject = async (form: any, chainId: ChainIdType, address:
     }
 }
 
+export const createNewUser = async (form: any, chainId: ChainIdType, address: String) => {
+    console.log("createNewUser", form)
+    const imageUrl = await uploadImage(form.image)
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.providers.Web3Provider(ethereum);
+            const signer = provider.getSigner();
+            const chainFolioContract = new ethers.Contract(contractAddress[chainId], abi, signer);
+
+            // let newProjectTx = await chainFolioContract.addProject(form.title, form.tagline, form.description, form.liveSiteUrl, form.githubUrl, form.contractUrl, imageUrl.url, form.category);
+            let newUserTx = await chainFolioContract.createProfile(form.name, form.linkedinUrl, form.githubUrl);
+            console.log("Add New User Transaction", newUserTx)
+        }
+    }
+    catch (error) {
+        console.log("createNewUser: Ethereum object does not exist")
+    }
+}
+
 export const fetchAllProjects = async (chainId: ChainIdType) => {
     if (!chainId) {
         chainId = 5;

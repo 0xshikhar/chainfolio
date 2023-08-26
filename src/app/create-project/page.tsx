@@ -19,11 +19,11 @@ const CreateProject = () => {
     if (!isConnected) redirect('/')
 
     return (
-        <div className='min-h-[80%] pt-10 bg-black bg-gradient-to-r from-gray-700 via-gray-900 to-black'>
+        <div className='min-h-[80%] pt-10 bg-gradient-to-r from-yellow-200 via-green-200 to-green-300'>
             <button onClick={() => onDismiss()} className="absolute flex text-black px-6 py-3 rounded-lg bg-white right-8">
                 Close <MdClose className="mt-1 ml-2 font-bold"/>
             </button>
-            <div className="bg-gradient-to-r from-[#fff] via-[#fff]/80 to-[#9d9ea1]/50 bg-clip-text 
+            <div className="bg-gradient-to-r from-gray-500 via-gray-800 to-black bg-clip-text 
                             text-transparent font-bold font-sans text-[60px] text-center">
                 Create Your Project
             </div>

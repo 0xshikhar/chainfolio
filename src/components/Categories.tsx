@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
 import { categoryFilters } from "@/constants";
 
 const Categories = () => {
@@ -17,7 +16,7 @@ const Categories = () => {
 
   return (
     <div className="flexBetween w-full gap-5 flex-wrap">
-      <ul className="flex gap-2 overflow-auto">
+      <ul className="flex gap-2 overflow-auto text-black">
         {categoryFilters.map((filter) => (
           <button
             key={filter}

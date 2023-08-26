@@ -13,6 +13,8 @@
   "dependencies": {
     "@headlessui/react": "^1.7.15",
     "@rainbow-me/rainbowkit": "^0.12.0",
+    "@spruceid/rebase-client": "^0.16.2",
+    "@spruceid/ssx": "^2.1.0",
     "alchemy-sdk": "^2.6.2",
     "cloudinary": "^1.40.0",
     "daisyui": "^2.51.6",

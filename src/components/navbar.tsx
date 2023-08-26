@@ -93,6 +93,14 @@ export default function Navbar() {
 				>
 					Create Project
 				</div>
+				<div
+					className={style.headerItem}
+					onClick={() => {
+						router.push("/create-profile");
+					}}
+				>
+					Create Profile
+				</div>
 
 
 				{/* <div className={style.headerIcon} onClick={() => { router.push(`/profile/${address}`) }}> */}

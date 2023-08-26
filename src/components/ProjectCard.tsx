@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 // import userImage from '../../public/images/user.png'
 // import projectImage from '../../public/images/project.jpg'
+import { AiFillEye, AiFillHeart } from 'react-icons/ai'
 
 type Props = {
     id: string;
@@ -67,13 +68,14 @@ const ProjectCard = ({ id, image, title, githubUrl, tagline, category, address }
                     </div>
                 </Link>
 
-                <div className="flexCenter gap-3">
+                <div className="flexCenter gap-3 text-gray-500">
                     <div className="flexCenter gap-2">
-                        <Image src="/images/hearth.svg" width={13} height={12} alt="heart" />
+                        <AiFillHeart className="text-red-600" size={14} />
+                        {/* <Image src="/images/hearth.svg" width={13} height={12} alt="heart" /> */}
                         <p className="text-sm">{randomLikes}</p>
                     </div>
                     <div className="flexCenter gap-2">
-                        <Image src="/images/eye.svg" width={12} height={9} alt="eye" />
+                    <AiFillEye className="text-gray-700" size={14} />
                         <p className="text-sm">{randomViews}</p>
                     </div>
                 </div>

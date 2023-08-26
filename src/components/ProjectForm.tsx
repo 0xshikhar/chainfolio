@@ -10,7 +10,7 @@ import CustomMenu from './CustomMenu';
 import { categoryFilters } from '@/constants';
 // import { updateProject, createNewProject, fetchToken } from '@/lib/actions';
 import { createNewProject } from '@/lib/contract';
-import { FormState, ProjectInterface, SessionInterface } from '@/common.types';
+import { FormState, ProjectInterface, SessionInterface, ChainIdType } from '@/common.types';
 import plusImage from '../../public/images/plus.svg'
 import { MdAdd } from 'react-icons/md';
 import { useProvider } from 'wagmi';
@@ -20,9 +20,6 @@ type Props = {
     address: string,
     project?: ProjectInterface
 }
-
-type ChainIdType = 5 | 421613 | 84531 | 80001 | 43113;
-
 
 const ProjectForm = ({ type, address, project }: Props) => {
     const router = useRouter()
@@ -95,8 +92,8 @@ const ProjectForm = ({ type, address, project }: Props) => {
         <form
             onSubmit={handleFormSubmit}
             className="flexStart flex-col w-full lg:pt-5 pt-5 gap-10 text-lg max-w-5xl mx-auto">
-            <div className="flexStart form_image-container">
-                <label htmlFor="poster" className="flexCenter form_image-label">
+            <div className="flexStart form_image-container text-black">
+                <label htmlFor="poster" className="flexCenter form_image-label bg-white text-black">
                     {!form.image && 'Choose a poster for your project'}
                 </label>
                 <input
@@ -170,19 +167,19 @@ const ProjectForm = ({ type, address, project }: Props) => {
             />
 
             <div className="flexStart w-full pb-5">
-                {/* <Button
+                <Button
                     title={submitting ? `${type === "create" ? "Creating" : "Editing"}` : `${type === "create" ? "Create" : "Edit"}`}
                     type="submit"
-                    leftIcon={submitting ? "" : { MdAdd }}
+                    leftIcon={submitting ? "" : "./images/plus.svg"}
                     submitting={submitting}
-                /> */}
-                <button
+                />
+                {/* <button
                     disabled={submitting || false}
                     className={`flexCenter gap-3 px-4 py-3 text-white 
                     ${submitting ? 'bg-black/50' : 'bg-green-200' ? 'bg-green-900' : 'bg-primary-purple'} rounded-xl text-sm font-medium max-md:w-full`}
                 >
                     <MdAdd />
-                    {submitting ? `${type === "create" ? "Creating" : "Editing"}` : `${type === "create" ? "Create" : "Edit"}`}                </button>
+                    {submitting ? `${type === "create" ? "Creating" : "Editing"}` : `${type === "create" ? "Create" : "Edit"}`}                </button> */}
             </div>
         </form>
     )

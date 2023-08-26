@@ -117,7 +117,7 @@ body {
 
 /* Form Field */
 .form_field-input {
-  @apply w-full outline-0 bg-gray-100 rounded-xl p-4;
+  @apply w-full outline-0 bg-gray-100 rounded-xl p-4 text-black;
 }
 
 /* Modal */

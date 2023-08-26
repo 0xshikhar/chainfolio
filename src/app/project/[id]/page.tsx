@@ -35,7 +35,7 @@ const Project = ({ params: { id } }: { params: { id: string } }) => {
     // const renderLink = () => `/profile/${project?.projectOnwer}`
 
     return (
-        <div>
+        <div className="pt-10 px-8 bg-gradient-to-r from-yellow-200 via-green-200 to-green-300">
             {project &&
                 <ProjectPage project={project} />
             }

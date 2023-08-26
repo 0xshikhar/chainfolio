@@ -36,7 +36,7 @@ const ProjectForm = ({ type, address, project }: Props) => {
         contractUrl: project?.contractUrl || "",
         image: project?.image || "",
         category: project?.category || ""
-        
+
     })
 
     const handleStateChange = (fieldName: keyof FormState, value: string) => {
@@ -92,9 +92,9 @@ const ProjectForm = ({ type, address, project }: Props) => {
         <form
             onSubmit={handleFormSubmit}
             className="flexStart flex-col w-full lg:pt-5 pt-5 gap-10 text-lg max-w-5xl mx-auto">
-            <div className="flexStart form_image-container text-black">
+            <div className="flexStart form_image-container">
                 <label htmlFor="poster" className="flexCenter form_image-label bg-white text-black">
-                    {!form.image && 'Choose a poster for your project'}
+                    {!form.image && (<div className='text-gray-400'>Choose a poster for your project</div>)}
                 </label>
                 <input
                     id="image"
@@ -166,20 +166,21 @@ const ProjectForm = ({ type, address, project }: Props) => {
                 setState={(value) => handleStateChange('category', value)}
             />
 
-            <div className="flexStart w-full pb-5">
-                <Button
+            <div className="flexStart w-full pb-5 ">
+                {/* <Button
                     title={submitting ? `${type === "create" ? "Creating" : "Editing"}` : `${type === "create" ? "Create" : "Edit"}`}
                     type="submit"
                     leftIcon={submitting ? "" : "./images/plus.svg"}
                     submitting={submitting}
-                />
-                {/* <button
+                /> */}
+                <button
                     disabled={submitting || false}
-                    className={`flexCenter gap-3 px-4 py-3 text-white 
-                    ${submitting ? 'bg-black/50' : 'bg-green-200' ? 'bg-green-900' : 'bg-primary-purple'} rounded-xl text-sm font-medium max-md:w-full`}
+                    className={`flexCenter gap-3 px-6 py-4 text-white 
+                    ${submitting ? 'bg-black/50' : 'bg-green-300' ? 'bg-gray-500' : 'bg-primary-purple'} rounded text-sm font-medium max-md:w-full`}
                 >
+                    {submitting ? `${type === "create" ? "Creating" : "Editing"}` : `${type === "create" ? "Create" : "Edit"}`}
                     <MdAdd />
-                    {submitting ? `${type === "create" ? "Creating" : "Editing"}` : `${type === "create" ? "Create" : "Edit"}`}                </button> */}
+                </button>
             </div>
         </form>
     )

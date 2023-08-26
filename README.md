@@ -1,4 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## ChainFolio Project
+
+Introducing Chainfolio, the groundbreaking on-chain portfolio-sharing application designed exclusively for developers and designers. With Chainfolio, you can showcase your creative work and technological prowess on the blockchain, taking your portfolio to the next level.
+
+ 
+## Features
+
+**1. Secure & Transparent**
+Chainfolio leverages blockchain technology, ensuring transparency, immutability, and data security for every portfolio shared.
+
+**2. Verified Identity & On-Chain Data using Spruce**
+We've partnered with Spruce for identity verification and onchain user data, giving your work credibility and trust within the community.
+
+**3. Layer2-Powered**
+Built on the layer 2 scaling solution Arbitrum & Avalanche, Chainfolio delivers lightning-fast transactions and a seamless user experience and gives you best of both world.
+
+**4. ENS Support**
+We are using ENS domains for making it more trustworthy and giving verified batch to user having ENS name on the blockchain.
+
+
 
 ## Getting Started
 

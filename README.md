@@ -1,6 +1,14 @@
 ## ChainFolio Project
 
-Introducing Chainfolio, the groundbreaking on-chain portfolio-sharing application designed exclusively for developers and designers. With Chainfolio, you can showcase your creative work and technological prowess on the blockchain, taking your portfolio to the next level.
+Introducing Chainfolio 🥳 , an awesome on-chain portfolio-sharing application designed exclusively for developers and designers. With Chainfolio, you can showcase your creative work and technological prowess on the blockchain, taking your portfolio to the next level.
+
+## Smart Contract
+
+` Arbitrum Testnet - 0x43ccc7277E12d6dD3363B9897e0cf5BB22e93735`
+
+` Avalanche Fuji - 0x3D9a23b00970154b338E7f0d20D0b6Dca0e9D21e`
+
+`Goerli Testnet - 0x9B4668DF5CfCAbbD016BE269EC4F1c75682610ef`
 
  
 ## Features
@@ -9,7 +17,7 @@ Introducing Chainfolio, the groundbreaking on-chain portfolio-sharing applicatio
 Chainfolio leverages blockchain technology, ensuring transparency, immutability, and data security for every portfolio shared.
 
 **2. Verified Identity & On-Chain Data using Spruce**
-We've partnered with Spruce for identity verification and onchain user data, giving your work credibility and trust within the community.
+We've integrated with Spruce SDK for identity verification and onchain user data, giving your work credibility and trust within the platform.
 
 **3. Layer2-Powered**
 Built on the layer 2 scaling solution Arbitrum & Avalanche, Chainfolio delivers lightning-fast transactions and a seamless user experience and gives you best of both world.
@@ -33,21 +41,23 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **Tech Stack -**
+- **BACKEND -**
+- Arbitrum (Layer 2)
+- Avalanche
+- ENS
+- Spruce
+- Cloudinary
+- Alchemy
+- Hardhat
+- Solidity
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **FRONTEND -**
+- Nextjs for the frontend app
+- TailwindCSS
+- Rainbow Wallet
 
-## Learn More
+- Made With ❤️ by Shikhar
+- Twitter - https://twitter.com/0xshikhar
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Thank you!

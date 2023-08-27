@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useProvider, useAccount, useEnsName } from 'wagmi'
 import { fetchEnsName } from '@wagmi/core'
-import { ProjectInterface, ChainIdType} from "@/common.types";
+import { ProjectInterface, ChainIdType } from "@/common.types";
 import { fetchAllProjects, convertBigNumber, getProjectId } from "@/lib/contract";
 import ProjectCard from "@/components/ProjectCard";
 import Categories from "@/components/Categories";
@@ -54,11 +54,12 @@ const Home = () => {
         console.log("data", data)
         const result = await getProjectId(3, 5)
         console.log("result", result)
-        const ensName = await fetchEnsName({
-          address: `${address}` as any,
-          chainId: 1,
-        })
         if (isConnected) {
+          const ensName = await fetchEnsName({
+            address: `${address}` as any,
+            chainId: 1,
+          })
+          console.log("ensName", ensName);
           if (ensName) {
             toast(`Welcome 🎉 ${ensName}`);
             console.log("address", address, "ensName.", ensName)
@@ -120,7 +121,7 @@ const Home = () => {
   // }
 
   return (
-    <section className="flexStart flex-col paddings bg-gradient-to-r from-yellow-200 via-green-200 to-green-300 ">
+    <section className="flexStart flex-col paddings bg-gradient-to-r from-yellow-200 via-green-200 to-green-300 min-h-screen ">
       <Categories />
       {/* <button type="button" onClick={() => router.push('/create-project')}>
         Create Project
